@@ -1,10 +1,11 @@
 import psycopg2
 from config import config
 
+
 def connect():
     conn = None
     try:
-        params = config()
+        params = config(section='postgresql')
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
         print('Connecting to the PostgreSQL Database...')
@@ -16,6 +17,7 @@ def connect():
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     return conn
+
 
 def close(conn: psycopg2.extensions.connection):
     conn.close()

@@ -3,11 +3,7 @@ import pandas as pd
 from config import config
 
 
-def dataframe():
-    # Get path
-    dict_path = config('path.ini','path')
-    path = dict_path['path']
-
+def dataframe(path):
     # Get CSV file from Directory
     dir_list = {}
     for x in os.listdir(path):
